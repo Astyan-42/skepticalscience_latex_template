@@ -1,0 +1,1 @@
+# skepticalscience_latex_template
