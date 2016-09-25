@@ -1,0 +1,139 @@
+\documentclass[a4paper, oneside, twocolumn, 11pt]{ssjtwo}
+\usepackage{lipsum}
+
+
+\begin{document}
+
+
+\title{Title of the publication} 
+\author[1]{Author A}
+\author[1]{Author B\thanks{B.B@university.edu}}
+\author[1]{Author C}
+\author[2]{Author D\thanks{D.D@university.edu}}
+\author[2]{Author E}
+\affil[1]{Department of Computer Science, \LaTeX\ University}
+\affil[2]{Department of Mechanical Engineering, \LaTeX\ University}
+
+% \contributor{Test Contributor}
+
+%----------------------------------------------------------------------------------------
+
+\maketitle 
+
+\begin{article}
+
+\begin{abstract}
+\lipsum[1]
+\end{abstract}
+
+
+%\keywords{Keyword1 | Keyword2 | Keyword3} 
+%\abbreviations{SAM, self-assembled monolayer; OTS, octadecyltrichlorosilane}
+
+\section{Introduction}
+
+\lipsum[1] \cite{CLAcha1}.
+
+\begin{equation}
+\mfrac{D \theta}{Dt}=\mfrac{ \theta}{ t} + u\cdot \nabla
+\theta=0 \label{qg1}
+\end{equation}
+
+Referencing equation \eqref{qg1}. \lipsum[1]
+
+\section{Results}
+
+\lipsum[1]. Referencing Table \ref{sampletable}. Referencing Figure \ref{placeholder}.
+
+\subsection{Simulations}
+
+\subsubsection{Simulation 1}
+
+\lipsum[1]
+
+\subsubsection{Simulation 2}
+
+\lipsum[1]
+
+\subsection{Real Data}
+
+\lipsum[1]
+
+\section{Discussion}
+
+\lipsum[1]
+
+\lipsum[1]
+
+\lipsum[1]
+
+\begin{materials}
+
+\lipsum[1]
+
+\begin{definition}
+A bounded function $\theta$ is a weak solution of QG if for any
+$\phi\,\epsilon\, C_0^{\infty}
+(\mathbb{Z}\times\mathbb{R}
+\times[0,\epsilon ])$ we have
+\begin{eqnarray}
+&&  \int_{\mathbb{R}^+\mathbb{R}}
+ \theta(x,y,t)\, \phi
+\,(x,y,t) dy dx dt+\nonumber\\
+  & +&\int_{\mathbb{R}^+\mathbb{R}}
+ \theta\,(x,y,t) u(x,y,t)\cdot\nabla\phi\,(x,y,t)
+dydxdt = 0 \label{weaksol} \end{eqnarray}
+where $u$ is determined previously.
+\end{definition}
+
+\lipsum[1]
+
+\begin{theorem}
+If the active scalar $\theta$ satisfies
+the equation \eqref{weaksol}, then $\varphi$ satisfies the equation
+with $|Error|\leq C\, \delta | log\delta| $ where $C$ depends only
+on $\|\theta\|_{L^{\infty}}$ and $\|
+\nabla\varphi\|_{L^{\infty}}$.
+\end{theorem}
+
+\lipsum[1]
+\end{materials}
+
+
+\begin{acknowledgments}
+\lipsum[1]
+\end{acknowledgments}
+
+\end{article}
+
+
+\begin{figure}[h]
+\centerline{\includegraphics[width=0.4\linewidth]{placeholder.jpg}}
+\caption{Figure caption}\label{placeholder}
+\end{figure}
+
+\begin{table}[h]
+\caption{Table caption}\label{sampletable}
+\begin{tabular}{l l l}
+\hline
+\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
+\hline
+Treatment 1 & 0.0003262 & 0.562 \\
+Treatment 2 & 0.0015681 & 0.910 \\
+Treatment 3 & 0.0009271 & 0.296 \\
+\hline
+\end{tabular}
+\end{table}
+
+
+%\begin{figure*}
+%\caption{Almost Sharp Front}\label{afoto}
+%\end{figure*}
+
+%\begin{table*}
+%\caption{Repeat length of longer allele by age of onset class}
+%\begin{tabular}{ccc}
+%\end{tabular}
+%\end{table*}
+
+\end{document}
