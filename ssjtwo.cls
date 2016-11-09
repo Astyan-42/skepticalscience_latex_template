@@ -20,74 +20,132 @@
 
 % packages
 \RequirePackage{graphicx}
+\RequirePackage{datetime}
 \RequirePackage{amssymb}
 \RequirePackage{amsthm}
 \RequirePackage{amsfonts}
 \RequirePackage{amsmath}
 \RequirePackage{nccmath}
 \RequirePackage{authblk}
+\RequirePackage{lastpage}
 \RequirePackage[colorlinks=true,urlcolor=black,linkcolor=black]{hyperref}
 \RequirePackage[latin1]{inputenc}
 \RequirePackage{lmodern}
 \RequirePackage{setspace}
 \RequirePackage{color}
 \RequirePackage{geometry}
+\RequirePackage{helvet}
+\RequirePackage{fancyhdr}
+
+% define new color
+\definecolor{orange}{RGB}{255,102,0}
+\definecolor{greentitle}{RGB}{51,102,51}
 
 % margin
 % to do better margin
 \geometry{margin=0.7in}
 
-%option 
+% define the space between column
+\setlength\columnsep{4mm}
 
+% define the parameter skip % not used because not pretty
+%\setlength\parskip{2.5mm}
+
+
+% header code
+% adding a date format for the header
+\newdateformat{headerdate}{\THEYEAR-\twodigit{\THEMONTH}-\twodigit{\THEDAY}}
+% new header properties
+\newcommand*{\doi}[1]{\gdef\@doi{#1}}
+\newcommand*{\@doi}{10.4000/exemple.35942}
+% do the header code
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\thepage/\pageref{LastPage}}
+\chead{SIS \headerdate\today}
+\lhead{DOI: \@doi}
+
+%option 
+% get arial
+\renewcommand{\familydefault}{\sfdefault}
+% set green as headlinecolor (don't work ?)
 \newcommand{\headlinecolor}{\normalcolor}
-\DeclareOption{green}{\renewcommand{\headlinecolor}{\color{green}}}
+\DeclareOption{green}{\renewcommand{\headlinecolor}{\color{greentitle}}}
+
 \ProcessOptions\relax
+
+% new title properties
+
+\newcommand*{\publicationstatus}[1]{\gdef\@publicationstatus{#1}}
+\newcommand*{\@publicationstatus}{submited/published/refused}
+\newcommand*{\publicationwarning}[1]{\gdef\@publicationwarning{#1}}
+\newcommand*{\@publicationwarning}{Warning about possible biais/Publication verified without biais}
+\newcommand*{\journalname}[1]{\gdef\@journalname{#1}}
+\newcommand*{\@journalname}{Skeptical Inquiry of Science}
+\newcommand*{\titlein}[1]{\gdef\@titlein{#1}}
+\newcommand*{\@titlein}{ in }
 
 
 % def
 
 \def\article{}
 \def\endarticle{}
-\def\abstract{\section{Abstract}}
+\def\abstract{\bfseries}
 \def\endabstract{}
 \def\materials{\section{Materials and Methods}}
 \def\endmaterials{}
-\def\definition{\subsection{Definition}}
+\def\definition{\subsubsection{Definition}}
 \def\enddefinition{}
-\def\theorem{\subsection{Theorem}}
+\def\theorem{\subsubsection{Theorem}}
 \def\endtheorm{}
-\def\acknowledgments{\textit{Acknowledgments}}
+\def\acknowledgments{\bigskip\textit{\textbf{Acknowledgments}}\itshape}
 \def\endacknowledgments{}
-\def\interestconflits{\textit{Conflict of interest statement}}
-\def\endinterestconflitss{}
-\def\bias{\textit{Bias}}
-\def\endbias{}
+% new command for abbrevations
+\newcommand{\abbreviations}[1][\medskip\fontsize{10}{12}\selectfont\noindent]{#1}
+
 % redefine only because of the nccmath module
-
-
-%\renewcommand\abstractname{Abstract}
-
-
+\renewcommand\abstractname{Abstract}
 
 
 %commandes
-
 % redefine the title
-%\renewcommand{\maketitle}{
-%	\twocolumn[
-%	\fontsize{72}{80}\fontfamily{phv}\fontseries{b}%
-%	\fontshape{sl}\selectfont\headlinecolor
-%	\@title]
-%}
+\renewcommand\Authfont{\fontsize{13}{15.6}\fontseries{b}\selectfont}
+\renewcommand\Affilfont{\fontsize{12}{14.4}\fontseries{m}\selectfont}
+
+\renewcommand{\maketitle}{
+	\twocolumn[{\fontsize{26}{31.2}\bfseries\selectfont\headlinecolor\@title\par}
+			   {\@author\par}
+			   {\medskip\@publicationstatus\@titlein\@journalname\par}
+			   {\medskip\bfseries\color{orange}\selectfont\@publicationwarning\par\vspace{2.5mm}}]
+}
 
 
-% redefine the ways the section is printed
+% redefine the ways the section is printed need to change the spaces
 \renewcommand\section{
 	\@startsection {section}{1}{\z@}
-    {-1ex \@plus -1ex \@minus -1ex}
-    {0.1ex \@plus.2ex}
-    {\Large\scshape\bfseries}
+    {0.30cm}
+    {0.10cm}
+    {\fontsize{20}{24}\scshape\bfseries\headlinecolor}
+}
+
+% redefine the ways the subsection is printed need to change the spaces
+\renewcommand\subsection{
+	\@startsection {subsection}{2}{\z@}
+    {0.30cm}
+    {0.10cm}
+    {\fontsize{16}{19.2}\scshape\bfseries\headlinecolor}
+}
+
+\renewcommand\subsubsection{
+	\@startsection {subsubsection}{3}{\z@}
+    {0.15cm}
+    {0.05cm}
+    {\fontsize{13}{15.6}\bfseries\headlinecolor}
 }
 
 % section have no number
 \setcounter{secnumdepth}{0}
+
+
+% need to check the way the bibliography print
+% need to add the abbreviation at 10pt
