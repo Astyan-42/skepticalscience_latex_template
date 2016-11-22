@@ -91,20 +91,10 @@
 \def\endarticle{}
 \def\abstract{\bfseries}
 \def\endabstract{}
-\def\materials{\section*{Materials and Methods}}
-\def\endmaterials{}
-\def\definition{\subsubsection{Definition}}
-\def\enddefinition{}
-\def\theorem{\subsubsection{Theorem}}
-\def\endtheorm{}
 \def\acknowledgments{\bigskip\textit{\textbf{Acknowledgments}}\itshape}
 \def\endacknowledgments{}
 % new command for abbrevations
 \newcommand{\abbreviations}[1][\medskip\fontsize{10}{12}\selectfont\noindent]{#1}
-
-% redefine only because of the nccmath module
-\renewcommand\abstractname{Abstract}
-
 
 %commandes
 % redefine the title
@@ -144,7 +134,6 @@
 
 % section have no number
 %\setcounter{secnumdepth}{0}
-
 
 % need to check the way the bibliography print
 % bibliography : need to be on a new part
