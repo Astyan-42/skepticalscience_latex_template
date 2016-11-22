@@ -2,9 +2,9 @@
 \usepackage{lipsum}
 
 \doi{10.4000/exemple2.35942}
+\bibliographystyle{ssjtwo}
 
 \begin{document}
-
 
 \title{Title of the publication} 
 \author[1]{Author A}
@@ -50,7 +50,7 @@ Referencing equation \eqref{qg1}. \lipsum[1]
 
 \subsubsection{Simulation 1}
 
-\lipsum[1]\cite{mascotmgf}\cite{twowayparallele}
+\lipsum[1]\cite{pepnovo}\cite{twowayparallele}
 
 \subsubsection{Simulation 2}
 
@@ -120,19 +120,12 @@ Treatment 3 & 0.0009271 & 0.296 \\
 \end{tabular}
 \end{table}
 
-
-%\begin{figure*}
-%\caption{Almost Sharp Front}\label{afoto}
-%\end{figure*}
-
-%\begin{table*}
-%\caption{Repeat length of longer allele by age of onset class}
-%\begin{tabular}{ccc}
-%\end{tabular}
-%\end{table*}
-
-\nocite{*}
+%\nocite{*}
+\clearpage
+% all stuff for bibliography, if need 
+\begin{singlespace}
+\begin{footnotesize} 
 \bibliography{bliblio}
-\bibliographystyle{plain}
-
+\end{footnotesize}
+\end{singlespace}
 \end{document}

@@ -36,6 +36,8 @@
 \RequirePackage{geometry}
 \RequirePackage{helvet}
 \RequirePackage{fancyhdr}
+%\RequirePackage{balance}
+\RequirePackage{flushend}
 
 % define new color
 \definecolor{orange}{RGB}{255,102,0}
@@ -64,13 +66,20 @@
 \chead{SIS \headerdate\today}
 \lhead{DOI: \@doi}
 
+%bibliography name redone property
+\renewcommand\refname{} %  empty the title
+\let\oldbibliography\bibliography % define oldbibliography to allow a recursive use
+\renewcommand{\bibliography}[1]{\begingroup%
+   						           \renewcommand{\section}[2]{}% only for this group, delete the title
+ 						           \oldbibliography{#1}% call of blibliography
+						        \endgroup}%
+
 %option 
 % get arial
 \renewcommand{\familydefault}{\sfdefault}
 % set green as headlinecolor (don't work ?)
 \newcommand{\headlinecolor}{\normalcolor}
 \DeclareOption{green}{\renewcommand{\headlinecolor}{\color{greentitle}}}
-
 \ProcessOptions\relax
 
 % new title properties
@@ -116,26 +125,28 @@
 	\@startsection {section}{1}{\z@}%
     {0.30cm}%
     {0.10cm}%
-    {\fontsize{20}{24}\scshape\bfseries\headlinecolor}}
+    {\fontsize{20}{24}\scshape\bfseries\headlinecolor}}%
 
 
 % redefine the ways the subsection is printed need to change the spaces
 \renewcommand\subsection{
-	\@startsection {subsection}{2}{\z@}
-    {0.30cm}
-    {0.10cm}
-    {\fontsize{16}{19.2}\scshape\bfseries\headlinecolor}}
+	\@startsection {subsection}{2}{\z@}%
+    {0.30cm}%
+    {0.10cm}%
+    {\fontsize{16}{19.2}\scshape\bfseries\headlinecolor}}%
 
 \renewcommand\subsubsection{
-	\@startsection {subsubsection}{3}{\z@}
-    {0.15cm}
-    {0.05cm}
-    {\fontsize{13}{15.6}\bfseries\headlinecolor}}
+	\@startsection {subsubsection}{3}{\z@}%
+    {0.15cm}%
+    {0.05cm}%
+    {\fontsize{13}{15.6}\bfseries\headlinecolor}}%
+
+%no bibliography name
+
 
 % section have no number
 %\setcounter{secnumdepth}{0}
 
 % need to check the way the bibliography print
 % bibliography : need to be on a new part
-% bibliography : need to delete the ugly * http://www.latex-community.org/forum/viewtopic.php?f=50&t=3497 http://tex.stackexchange.com/questions/165378/biblatex-prints-an-unwanted-star
 % makebst
