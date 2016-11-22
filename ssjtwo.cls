@@ -36,8 +36,9 @@
 \RequirePackage{geometry}
 \RequirePackage{helvet}
 \RequirePackage{fancyhdr}
-%\RequirePackage{balance}
-\RequirePackage{flushend}
+%\RequirePackage{balance} % temporary
+\RequirePackage{flushend} % temporary
+%\RequirePackage{multicol}
 
 % define new color
 \definecolor{orange}{RGB}{255,102,0}
@@ -66,15 +67,14 @@
 \chead{SIS \headerdate\today}
 \lhead{DOI: \@doi}
 
+%option
 %bibliography name redone property
 \renewcommand\refname{} %  empty the title
 \let\oldbibliography\bibliography % define oldbibliography to allow a recursive use
 \renewcommand{\bibliography}[1]{\begingroup%
    						           \renewcommand{\section}[2]{}% only for this group, delete the title
  						           \oldbibliography{#1}% call of blibliography
-						        \endgroup}%
-
-%option 
+						        \endgroup}% 
 % get arial
 \renewcommand{\familydefault}{\sfdefault}
 % set green as headlinecolor (don't work ?)
