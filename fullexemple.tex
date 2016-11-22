@@ -29,11 +29,9 @@
 \noindent
 \lipsum[1]
 \end{abstract}
-%\begin{abbreviations}SAM, self-assembled monolayer; OTS, octadecyltrichlorosilane\end{abbreviations}
-%\keywords{Keyword1 | Keyword2 | Keyword3} 
 \abbreviations{SAM, self-assembled monolayer; OTS, octadecyltrichlorosilane}
 
-\section{Introduction}
+\section*{Introduction}
 
 \lipsum[3] \cite{CLAcha1}.
 
@@ -44,25 +42,25 @@
 
 Referencing equation \eqref{qg1}. \lipsum[1]
 
-\section{Results}
+\section*{Results}
 
 \lipsum[1]. Referencing Table \ref{sampletable}. Referencing Figure \ref{placeholder}.
 
-\subsection{Simulations}
+\subsection*{Simulations}
 
 \subsubsection{Simulation 1}
 
-\lipsum[1]
+\lipsum[1]\cite{mascotmgf}\cite{twowayparallele}
 
 \subsubsection{Simulation 2}
 
 \lipsum[1]
 
-\subsection{Real Data}
+\subsection*{Real Data}
 
 \lipsum[1]
 
-\section{Discussion}
+\section*{Discussion}
 
 \lipsum[1]
 
@@ -138,5 +136,9 @@ Treatment 3 & 0.0009271 & 0.296 \\
 %\begin{tabular}{ccc}
 %\end{tabular}
 %\end{table*}
+
+\nocite{*}
+\bibliography{bliblio}
+\bibliographystyle{plain}
 
 \end{document}

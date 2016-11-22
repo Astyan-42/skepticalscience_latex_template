@@ -51,7 +51,6 @@
 % define the parameter skip % not used because not pretty
 %\setlength\parskip{2.5mm}
 
-
 % header code
 % adding a date format for the header
 \newdateformat{headerdate}{\THEYEAR-\twodigit{\THEMONTH}-\twodigit{\THEDAY}}
@@ -92,7 +91,7 @@
 \def\endarticle{}
 \def\abstract{\bfseries}
 \def\endabstract{}
-\def\materials{\section{Materials and Methods}}
+\def\materials{\section*{Materials and Methods}}
 \def\endmaterials{}
 \def\definition{\subsubsection{Definition}}
 \def\enddefinition{}
@@ -119,33 +118,35 @@
 			   {\medskip\bfseries\color{orange}\selectfont\@publicationwarning\par\vspace{2.5mm}}]
 }
 
+% to only have the subsubsection number
+%\renewcommand{\thesubsubsection}{\arabic{subsubsection}}
 
 % redefine the ways the section is printed need to change the spaces
 \renewcommand\section{
-	\@startsection {section}{1}{\z@}
-    {0.30cm}
-    {0.10cm}
-    {\fontsize{20}{24}\scshape\bfseries\headlinecolor}
-}
+	\@startsection {section}{1}{\z@}%
+    {0.30cm}%
+    {0.10cm}%
+    {\fontsize{20}{24}\scshape\bfseries\headlinecolor}}
+
 
 % redefine the ways the subsection is printed need to change the spaces
 \renewcommand\subsection{
 	\@startsection {subsection}{2}{\z@}
     {0.30cm}
     {0.10cm}
-    {\fontsize{16}{19.2}\scshape\bfseries\headlinecolor}
-}
+    {\fontsize{16}{19.2}\scshape\bfseries\headlinecolor}}
 
 \renewcommand\subsubsection{
 	\@startsection {subsubsection}{3}{\z@}
     {0.15cm}
     {0.05cm}
-    {\fontsize{13}{15.6}\bfseries\headlinecolor}
-}
+    {\fontsize{13}{15.6}\bfseries\headlinecolor}}
 
 % section have no number
-\setcounter{secnumdepth}{0}
+%\setcounter{secnumdepth}{0}
 
 
 % need to check the way the bibliography print
-% need to add the abbreviation at 10pt
+% bibliography : need to be on a new part
+% bibliography : need to delete the ugly * http://www.latex-community.org/forum/viewtopic.php?f=50&t=3497 http://tex.stackexchange.com/questions/165378/biblatex-prints-an-unwanted-star
+% makebst
