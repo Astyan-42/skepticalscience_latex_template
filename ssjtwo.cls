@@ -36,9 +36,9 @@
 \RequirePackage{geometry}
 \RequirePackage{helvet}
 \RequirePackage{fancyhdr}
+\RequirePackage{multicol}
 %\RequirePackage{balance} % temporary
-\RequirePackage{flushend} % temporary
-%\RequirePackage{multicol}
+%\RequirePackage{flushend} % temporary
 
 % define new color
 \definecolor{orange}{RGB}{255,102,0}
@@ -71,10 +71,16 @@
 %bibliography name redone property
 \renewcommand\refname{} %  empty the title
 \let\oldbibliography\bibliography % define oldbibliography to allow a recursive use
-\renewcommand{\bibliography}[1]{\begingroup%
+\renewcommand{\bibliography}[1]{\begin{multicols}{2}%
+								\begin{tiny}%
+								\begin{footnotesize}% 
+								\begingroup%
    						           \renewcommand{\section}[2]{}% only for this group, delete the title
- 						           \oldbibliography{#1}% call of blibliography
-						        \endgroup}% 
+ 						           \oldbibliography{#1}% call of blibliography     
+						        \endgroup%
+						        	\end{footnotesize}
+								\end{tiny}
+						        \end{multicols}}% 
 % get arial
 \renewcommand{\familydefault}{\sfdefault}
 % set green as headlinecolor (don't work ?)
@@ -96,8 +102,8 @@
 
 % def
 
-\def\article{}
-\def\endarticle{}
+\def\article{\begin{multicols}{2}}
+\def\endarticle{\end{multicols}}
 \def\abstract{\bfseries}
 \def\endabstract{}
 \def\acknowledgments{\bigskip\textit{\textbf{Acknowledgments}}\itshape}
@@ -111,10 +117,11 @@
 \renewcommand\Affilfont{\fontsize{12}{14.4}\fontseries{m}\selectfont}
 
 \renewcommand{\maketitle}{
-	\twocolumn[{\fontsize{26}{31.2}\bfseries\selectfont\headlinecolor\@title\par}
+			   %twocolum[ if twocolumn
+			   {\fontsize{26}{31.2}\bfseries\selectfont\headlinecolor\@title\par}
 			   {\@author\par}
 			   {\medskip\@publicationstatus\@titlein\@journalname\par}
-			   {\medskip\bfseries\color{orange}\selectfont\@publicationwarning\par\vspace{2.5mm}}]
+			   {\medskip\bfseries\color{orange}\selectfont\@publicationwarning\par\vspace{2.5mm}}
 }
 
 % to only have the subsubsection number
@@ -148,5 +155,5 @@
 %\setcounter{secnumdepth}{0}
 
 % need to check the way the bibliography print
-% bibliography : need to be on a new part
+% color of link in bibliography
 % makebst
